@@ -15,12 +15,16 @@ git config --global user.name SilentDemonSD
 git remote add origin $REPO_URL
 git fetch origin -q
 git reset --hard origin/$REPO_BRANCH -q
-uv apt-get update && \
+apt-get update && \
     apt-get install -y ffmpeg && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-uv pip install --system --no-cache-dir -q -r requirements.txt
+uv pip install --system --no-cache-dir -q -r requirements.txt && \
+    apt-get update && \
+    apt-get install -y ffmpeg && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 if [ -z "$START_CMD" ]; then
   echo "START_CMD not specified. Exiting Now ..."
