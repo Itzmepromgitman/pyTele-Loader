@@ -17,14 +17,12 @@ git fetch origin -q
 git reset --hard origin/$REPO_BRANCH -q
 apt-get update && \
     apt-get install -y ffmpeg && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean 
 
 uv pip install --system --no-cache-dir -q -r requirements.txt && \
     apt-get update && \
     apt-get install -y ffmpeg && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get clean 
 
 if [ -z "$START_CMD" ]; then
   echo "START_CMD not specified. Exiting Now ..."
